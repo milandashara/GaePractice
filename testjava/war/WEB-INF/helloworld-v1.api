@@ -1,0 +1,70 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://testjava-110406.appspot.com/_ah/api",
+  "name" : "helloworld",
+  "version" : "v1",
+  "description" : "Sample API",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://testjava-110406.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "helloworld.sayHelloWorld" : {
+      "path" : "helloworld/{Name}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.testjava.api.HelloWorld.sayHelloWorld",
+      "request" : {
+        "parameters" : {
+          "Name" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Message" : {
+        "id" : "Message",
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.testjava.api.HelloWorld.sayHelloWorld" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      }
+    }
+  }
+}
